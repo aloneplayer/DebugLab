@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://red-gate.com/webservices/ActivationServer" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://red-gate.com/webservices/ActivationServer" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://red-gate.com/webservices/ActivationServer">
+      <s:element name="GetSerialCreated">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serialNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="productCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSerialCreatedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSerialCreatedResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSupportExpiry">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serialNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSupportExpiryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSupportExpiryResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActivationsRemaining">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serialNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="productCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActivationsRemainingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetActivationsRemainingResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActivateLicence">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="activationRequest" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActivateLicenceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActivateLicenceResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="activationResponse" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeactivateLicence">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deactivationRequest" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeactivateLicenceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeactivateLicenceResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetSerialCreatedSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSerialCreated" />
+  </wsdl:message>
+  <wsdl:message name="GetSerialCreatedSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSerialCreatedResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSupportExpirySoapIn">
+    <wsdl:part name="parameters" element="tns:GetSupportExpiry" />
+  </wsdl:message>
+  <wsdl:message name="GetSupportExpirySoapOut">
+    <wsdl:part name="parameters" element="tns:GetSupportExpiryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetActivationsRemainingSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActivationsRemaining" />
+  </wsdl:message>
+  <wsdl:message name="GetActivationsRemainingSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActivationsRemainingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActivateLicenceSoapIn">
+    <wsdl:part name="parameters" element="tns:ActivateLicence" />
+  </wsdl:message>
+  <wsdl:message name="ActivateLicenceSoapOut">
+    <wsdl:part name="parameters" element="tns:ActivateLicenceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeactivateLicenceSoapIn">
+    <wsdl:part name="parameters" element="tns:DeactivateLicence" />
+  </wsdl:message>
+  <wsdl:message name="DeactivateLicenceSoapOut">
+    <wsdl:part name="parameters" element="tns:DeactivateLicenceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ActivationSoap">
+    <wsdl:operation name="GetSerialCreated">
+      <wsdl:input message="tns:GetSerialCreatedSoapIn" />
+      <wsdl:output message="tns:GetSerialCreatedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSupportExpiry">
+      <wsdl:input message="tns:GetSupportExpirySoapIn" />
+      <wsdl:output message="tns:GetSupportExpirySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivationsRemaining">
+      <wsdl:input message="tns:GetActivationsRemainingSoapIn" />
+      <wsdl:output message="tns:GetActivationsRemainingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActivateLicence">
+      <wsdl:input message="tns:ActivateLicenceSoapIn" />
+      <wsdl:output message="tns:ActivateLicenceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeactivateLicence">
+      <wsdl:input message="tns:DeactivateLicenceSoapIn" />
+      <wsdl:output message="tns:DeactivateLicenceSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ActivationSoap" type="tns:ActivationSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSerialCreated">
+      <soap:operation soapAction="http://red-gate.com/webservices/ActivationServer/GetSerialCreated" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupportExpiry">
+      <soap:operation soapAction="http://red-gate.com/webservices/ActivationServer/GetSupportExpiry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivationsRemaining">
+      <soap:operation soapAction="http://red-gate.com/webservices/ActivationServer/GetActivationsRemaining" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActivateLicence">
+      <soap:operation soapAction="http://red-gate.com/webservices/ActivationServer/ActivateLicence" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeactivateLicence">
+      <soap:operation soapAction="http://red-gate.com/webservices/ActivationServer/DeactivateLicence" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ActivationSoap12" type="tns:ActivationSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSerialCreated">
+      <soap12:operation soapAction="http://red-gate.com/webservices/ActivationServer/GetSerialCreated" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSupportExpiry">
+      <soap12:operation soapAction="http://red-gate.com/webservices/ActivationServer/GetSupportExpiry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivationsRemaining">
+      <soap12:operation soapAction="http://red-gate.com/webservices/ActivationServer/GetActivationsRemaining" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActivateLicence">
+      <soap12:operation soapAction="http://red-gate.com/webservices/ActivationServer/ActivateLicence" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeactivateLicence">
+      <soap12:operation soapAction="http://red-gate.com/webservices/ActivationServer/DeactivateLicence" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Activation">
+    <wsdl:port name="ActivationSoap" binding="tns:ActivationSoap">
+      <soap:address location="http://licensing.red-gate.com/activation.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ActivationSoap12" binding="tns:ActivationSoap12">
+      <soap12:address location="http://licensing.red-gate.com/activation.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
