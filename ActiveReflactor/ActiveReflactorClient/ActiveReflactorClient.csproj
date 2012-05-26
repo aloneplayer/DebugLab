@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Reflector">
+      <HintPath>..\..\..\..\..\DevTools\Reflector7.5.2.1\Reflector.exe</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -60,6 +63,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RedGate.Licence.Test.cs" />
     <Compile Include="ReflactorActivationTest.cs" />
     <Compile Include="Service References\ActivationServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
